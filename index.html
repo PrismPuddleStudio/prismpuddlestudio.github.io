@@ -1,89 +1,374 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prism Puddle Studios</title>
-  <meta name="description" content="Prism Puddle Studios makes Number Garden - Color By Number, a relaxing color-by-number app.">
+  <meta name="description" content="Prism Puddle Studios is a small independent studio making relaxing, family-friendly mobile games and apps for iPhone and Android, including Number Garden - Color By Number.">
+  <link rel="canonical" href="https://prismpuddlestudio.github.io/">
+  <meta name="theme-color" content="#f6f3fb">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="Prism Puddle Studios">
+  <meta property="og:description" content="A small independent studio making relaxing, family-friendly mobile games and apps for iPhone and Android, with original artwork and a focus on calm, cozy play.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://prismpuddlestudio.github.io/">
+  <meta property="og:site_name" content="Prism Puddle Studios">
+  <meta property="og:image" content="https://prismpuddlestudio.github.io/images/number-garden.jpg">
+  <meta property="og:image:alt" content="Number Garden artwork: a color-by-number winter scene with a snowy cabin, a snowman, pine trees, and a sled.">
+  <meta property="og:image:width" content="900">
+  <meta property="og:image:height" content="900">
+  <meta property="og:image:type" content="image/jpeg">
   <style>
+    :root {
+      --ink: #3c3452;
+      --muted: #5c5470;
+      --link: #6b4c9a;
+      --link-hover: #2f7d86;
+      --card: rgba(255, 255, 255, 0.82);
+      --shadow: 0 18px 50px rgba(120, 100, 160, 0.12);
+      --measure: 40rem;
+      --page: 66rem;
+    }
     * { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
+    html {
+      -webkit-text-size-adjust: 100%;
+      color-scheme: light;
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
-      color: #3c3452;
+      display: flex;
+      flex-direction: column;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color: var(--ink);
       background:
         radial-gradient(1100px 560px at 0% -8%, #ffe8f4 0%, transparent 55%),
         radial-gradient(900px 480px at 100% 0%, #e5f3ff 0%, transparent 50%),
         radial-gradient(780px 460px at 85% 100%, #e7fff3 0%, transparent 50%),
         radial-gradient(680px 400px at 8% 100%, #fff4dc 0%, transparent 46%),
+        radial-gradient(520px 320px at 50% 38%, rgba(201, 182, 242, 0.28) 0%, transparent 70%),
         #f6f3fb;
       line-height: 1.6;
     }
-    .wrap {
-      max-width: 40rem;
+    a { color: var(--link); }
+    a:hover { color: var(--link-hover); }
+    a:focus-visible {
+      outline: 3px solid #7a5bb5;
+      outline-offset: 3px;
+    }
+    .skip {
+      position: absolute;
+      left: 0.75rem;
+      top: 0.75rem;
+      transform: translateY(-160%);
+      background: #fff;
+      color: var(--ink);
+      padding: 0.45rem 0.75rem;
+      border-radius: 0.7rem;
+      z-index: 20;
+    }
+    .skip:focus { transform: none; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #f6f3fb;
+      border-bottom: 1px solid rgba(201, 182, 226, 0.55);
+    }
+    .header-inner {
+      max-width: var(--measure);
       margin: 0 auto;
-      padding: 12vh 1.15rem 3.5rem;
+      padding: 0.7rem 1.15rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem 0.75rem;
     }
-    .card {
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      border-radius: 1.4rem;
-      box-shadow: 0 18px 50px rgba(120, 100, 160, 0.12);
-      padding: 1.75rem 1.4rem 1.9rem;
-    }
-    .card::before {
-      content: "";
-      display: block;
-      height: 6px;
-      margin: -1.75rem -1.4rem 1.35rem;
-      background: linear-gradient(90deg, #f7b5d2, #f3c98b, #b7e3c2, #a9d4f5, #c9b6f2);
-    }
-    .moon {
-      margin: 0 0 0.35rem;
-      font-size: 1.55rem;
-      letter-spacing: 0.12em;
-      color: #c9a6e0;
-    }
-    h1 {
-      font-size: clamp(1.85rem, 5vw, 2.35rem);
-      line-height: 1.15;
-      font-weight: 600;
-      margin: 0 0 0.75rem;
+    .brand {
+      color: var(--ink);
+      font-weight: 700;
       letter-spacing: -0.02em;
+      text-decoration: none;
     }
-    p { margin: 0.7rem 0; font-size: 1.08rem; }
+    .brand:hover { color: var(--link-hover); }
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1.35rem;
+      gap: 0.25rem;
     }
-    a {
-      color: #6b4c9a;
-      font-family: "Avenir Next", "Segoe UI", sans-serif;
-      font-size: 0.95rem;
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
       text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    nav a:hover { background: rgba(255, 255, 255, 0.95); }
+    main { flex: 1; }
+    .wrap {
+      max-width: var(--page);
+      margin: 0 auto;
+      padding: 0 1.15rem 2.5rem;
+    }
+    #top, #about, #games, #contact { scroll-margin-top: 8rem; }
+    .hero, .section-copy, .panel {
+      max-width: var(--measure);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero { padding: 2.6rem 0 0.4rem; }
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0 0 0.7rem;
+      color: var(--link);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .dots {
+      display: inline-flex;
+      gap: 0.28rem;
+    }
+    .dots span {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+    }
+    .dots span:nth-child(1) { background: #f7b5d2; }
+    .dots span:nth-child(2) { background: #f3c98b; }
+    .dots span:nth-child(3) { background: #b7e3c2; }
+    .dots span:nth-child(4) { background: #a9d4f5; }
+    .dots span:nth-child(5) { background: #c9b6f2; }
+    h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.05rem, 5vw, 3rem);
+      line-height: 1.12;
+    }
+    .lede {
+      margin: 0.75rem 0 0;
+      font-size: 1.12rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .prism-rule {
+      width: 7.5rem;
+      height: 0.45rem;
+      margin: 1.15rem 0 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f7b5d2, #f3c98b, #b7e3c2, #a9d4f5, #c9b6f2);
+    }
+    .block { margin: 2rem auto 0; }
+    h2 {
+      max-width: var(--measure);
+      margin: 0 auto 0.85rem;
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      line-height: 1.25;
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 1.4rem;
+      box-shadow: var(--shadow);
+      padding: 1.35rem 1.3rem 1.45rem;
+    }
+    .panel p {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+    .game-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.25rem;
+      justify-content: center;
+    }
+    @media (min-width: 760px) {
+      .game-grid {
+        grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+      }
+    }
+    .game-card {
+      display: flex;
+      flex-direction: column;
+      width: min(100%, 40rem);
+      justify-self: center;
+      min-width: 0;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 1.4rem;
+      box-shadow: var(--shadow);
+      padding: 0.75rem 0.75rem 1rem;
+    }
+    .game-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 1rem;
+      border: 1px solid rgba(60, 52, 82, 0.1);
+      background: #efeaf6;
+    }
+    .game-body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.7rem;
+      flex: 1;
+      padding: 0.95rem 0.4rem 0.2rem;
+    }
+    .game-card h3 {
+      margin: 0;
+      font-size: 1.28rem;
+      line-height: 1.3;
+    }
+    .game-desc {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .badge {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0.1rem 0 0;
+      padding: 0.45rem 0.75rem;
+      border-radius: 0.9rem;
+      border: 1px solid #eadff2;
+      background: linear-gradient(90deg, #fff4f8, #fff8ec 38%, #f3fff7 70%, #f3f8ff);
+      color: #4a3d62;
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .badge-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-top: 0.28rem;
+      border-radius: 50%;
+      background: #e08a3c;
+      flex: none;
+    }
+    .card-privacy {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-weight: 700;
+    }
+    .contact-copy { margin: 0 0 0.95rem; }
+    .mail {
+      display: inline-block;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      min-height: 44px;
+      padding: 0.7rem 0.95rem;
+      border-radius: 999px;
       background: #fff;
       border: 1px solid #eadff5;
-      border-radius: 999px;
-      padding: 0.45rem 0.9rem;
+      text-decoration: none;
+      font-weight: 700;
+      line-height: 1.35;
     }
-    a:hover { color: #2f7d86; border-color: #c9b6e8; }
+    .mail:hover { border-color: #c9b6e8; }
+    .site-footer {
+      width: 100%;
+      margin-top: 2.5rem;
+      padding: 1.15rem 1.15rem 2rem;
+      border-top: 1px solid rgba(201, 182, 226, 0.45);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 1rem;
+      justify-content: center;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .site-footer p { margin: 0; }
+    .site-footer a { font-weight: 700; }
+    @media (max-width: 420px) {
+      .header-inner, .wrap { padding-left: 0.85rem; padding-right: 0.85rem; }
+      .panel { padding: 1.15rem 1rem 1.25rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <div class="card">
-      <p class="moon" aria-hidden="true">☾</p>
-      <h1>Prism Puddle Studios</h1>
-      <p>Makers of Number Garden - Color By Number, a relaxing color-by-number app.</p>
-      <nav>
-        <a href="/privacy/">Privacy Policy</a>
-        <a href="mailto:numbergarden@protonmail.com">numbergarden@protonmail.com</a>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">Prism Puddle Studios</a>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#games">Games</a>
+        <a href="#contact">Support</a>
       </nav>
     </div>
+  </header>
+  <main id="main">
+    <div class="wrap">
+      <section class="hero" id="top" aria-labelledby="studio-name">
+        <p class="kicker">
+          <span class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+          A small independent studio
+        </p>
+        <h1 id="studio-name">Prism Puddle Studios</h1>
+        <p class="lede">Calm, cozy play, with original artwork.</p>
+        <div class="prism-rule" aria-hidden="true"></div>
+      </section>
+
+      <section class="block" id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading">About the studio</h2>
+        <div class="panel">
+          <p>Prism Puddle Studios is a small independent studio making relaxing, family-friendly mobile games and apps for iPhone and Android, with original artwork and a focus on calm, cozy play.</p>
+        </div>
+      </section>
+
+      <section class="block" id="games" aria-labelledby="games-heading">
+        <h2 id="games-heading">Our Games</h2>
+        <div class="game-grid">
+          <!-- Copy an article.game-card to add another game. -->
+          <article class="game-card">
+            <img
+              src="images/number-garden.jpg"
+              alt="Number Garden artwork: a color-by-number winter scene with a snowy cabin, a snowman in a red scarf, pine trees, and a sled"
+              width="900"
+              height="900"
+              loading="lazy"
+              decoding="async">
+            <div class="game-body">
+              <h3>Number Garden - Color By Number</h3>
+              <p class="game-desc">A relaxing color-by-number game. Pick a color, tap the numbered spaces, and watch cozy hand-drawn pictures come to life. Track your progress with color rings, use hints when you're stuck, and watch a replay of your finished art.</p>
+              <p class="badge"><span class="badge-dot" aria-hidden="true"></span>Coming soon to the App Store and Google Play</p>
+              <a class="card-privacy" href="/privacy/">Privacy Policy</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact &amp; Support</h2>
+        <div class="panel">
+          <p class="contact-copy">Questions, feedback, or help with a game? Send an email.</p>
+          <a class="mail" href="mailto:numbergarden@protonmail.com">numbergarden@<wbr>protonmail.com</a>
+        </div>
+      </section>
+    </div>
   </main>
+  <footer class="site-footer">
+    <p>&copy; 2026 Prism Puddle Studios</p>
+    <a href="/privacy/">Privacy Policy</a>
+  </footer>
 </body>
 </html>
