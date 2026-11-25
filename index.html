@@ -219,6 +219,23 @@
     .game-card img.portrait {
       aspect-ratio: 3 / 4;
     }
+    .game-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+    }
+    .game-card img.app-icon {
+      width: 3.25rem;
+      height: 3.25rem;
+      flex: none;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 22%;
+      border: 1px solid rgba(60, 52, 82, 0.12);
+      box-shadow: 0 6px 16px rgba(80, 60, 110, 0.16);
+      background: #fff;
+    }
     .game-body {
       display: flex;
       flex-direction: column;
@@ -351,7 +368,9 @@
               loading="lazy"
               decoding="async">
             <div class="game-body">
-              <h3>Number Garden - Color By Number</h3>
+              <div class="game-heading">
+                <h3>Number Garden - Color By Number</h3>
+              </div>
               <p class="game-desc">A relaxing color-by-number game. Pick a color, tap the numbered spaces, and watch cozy hand-drawn pictures come to life. Track your progress with color rings, use hints when you're stuck, and watch a replay of your finished art.</p>
               <p class="badge"><span class="badge-dot" aria-hidden="true"></span>Coming soon to Google Play</p>
               <a class="card-privacy" href="/privacy/">Privacy Policy</a>
@@ -367,7 +386,17 @@
               loading="lazy"
               decoding="async">
             <div class="game-body">
-              <h3>Tile Garden</h3>
+              <div class="game-heading">
+                <img
+                  class="app-icon"
+                  src="images/tile-garden-icon.jpg"
+                  alt=""
+                  width="512"
+                  height="512"
+                  loading="lazy"
+                  decoding="async">
+                <h3>Tile Garden</h3>
+              </div>
               <p class="game-desc">A cozy triple tile-match puzzle. Tap tiles to fill a 7-slot tray and clear three of a kind. Play 50 hand-crafted levels in five garden chapters: Seedling Path, Blossom Lane, Orchard Hill, Willow Pond, and Starlight Grove. A fresh Daily Garden puzzle comes with streaks, and My Garden grows from grey to full color as you finish levels. Use Undo, Shuffle, and Hint helpers, plus a friendly tutorial and calm original music and sounds. No lives and no timers.</p>
               <p class="badge"><span class="badge-dot" aria-hidden="true"></span>Coming soon to Google Play</p>
               <a class="card-privacy" href="/privacy/">Privacy Policy</a>
@@ -383,7 +412,17 @@
               loading="lazy"
               decoding="async">
             <div class="game-body">
-              <h3>Hive &amp; Nest</h3>
+              <div class="game-heading">
+                <img
+                  class="app-icon"
+                  src="images/hive-and-nest-icon.jpg"
+                  alt=""
+                  width="512"
+                  height="512"
+                  loading="lazy"
+                  decoding="async">
+                <h3>Hive &amp; Nest</h3>
+              </div>
               <p class="game-desc">A cozy bee puzzle from Prism Puddle Studios. Send bees from hive boxes to gather colored pixels and reveal a hidden picture. Bees march in a line around the picture, grab a pixel, and carry it home. Earn coins as you finish levels, spend them on power-ups and upgrades, and take on Hard and Super Hard stages. Pause or speed up whenever you like. No lives, no timers, and no ads. Coins are earned in the game, not bought with real money.</p>
               <p class="badge"><span class="badge-dot" aria-hidden="true"></span>Coming soon to Google Play</p>
               <a class="card-privacy" href="/privacy/">Privacy Policy</a>
